@@ -9,5 +9,19 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-color: black;
 }
 
+.main {
+    border: 1px solid whitesmoke;
+}
+
+.upperSec{
+    border: 1px solid red;
+    display: grid;
+    grid-template-rows: 10% 1fr;
+}
+
+.lowerSec {
+    border: 1px solid blue;
+}
