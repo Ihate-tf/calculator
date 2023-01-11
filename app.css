@@ -10,18 +10,48 @@ body{
     align-items: center;
     min-height: 100vh;
     background: black;
+    color: white;
 }
 
 .main {
-    border: 1px solid whitesmoke;
+    display: grid;
+    gap: 2em;
+    border: 1px solid;
+    padding: 1em
 }
 
-.upperSec{
-    border: 1px solid red;
-    display: grid;
-    grid-template-rows: 10% 1fr;
+.upperSec {
+    border: 1px solid white;
+    padding: 5px 10px;
+}
+
+.upperSec .number-show-top{
+    text-align: right;
+    margin-bottom: 0.5em;
+}
+
+.upperSec .number-show-bottom{
+    font-size: 21px;
+    text-align: right;
 }
 
 .lowerSec {
-    border: 1px solid blue;
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    place-items: center;
+    gap: 0.5em;
 }
+
+.lowerSec > div {
+    border: 1px solid;
+    padding: 1em 2em;
+}
+
+.lowerSec div:hover {
+    border: 1px solid gray;
+}
+
+
+
+
+
