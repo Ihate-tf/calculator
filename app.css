@@ -17,8 +17,13 @@ body{
     display: grid;
     gap: 2em;
     border: 1px solid;
-    padding: 1em
+    padding: 1em;
+    border-image: linear-gradient(to bottom, red, blue, green);
+    border-image-slice: 1;
+    border-width: 3px;
+    animation: border 1s infinite cubic-bezier(1,0,0,1);
 }
+
 
 .upperSec {
     border: 1px solid white;
@@ -54,4 +59,17 @@ body{
 
 
 
+/*Keyframes starts*/
 
+@keyframes border {
+
+    from{
+        border-image: linear-gradient(to bottom, red, blue, green);
+        border-image-slice: 1;
+    }
+
+    to{
+        border-image: linear-gradient(to bottom, green, blue, red);
+        border-image-slice: 1;
+    }
+}
