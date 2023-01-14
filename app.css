@@ -1,3 +1,11 @@
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Yanone+Kaffeesatz:wght@400;500;600;700&display=swap');
+
+:root{
+    --font :'Montserrat', sans-serif;
+    --head-font-weight: 600;
+    --sub-font-weight:400;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -11,6 +19,7 @@ body{
     min-height: 100vh;
     background: black;
     color: white;
+    font-family: var(--font);
 }
 
 .main {
@@ -40,6 +49,7 @@ body{
 .upperSec {
     border: 1px solid white;
     padding: 5px 10px;
+    font-weight: var(--head-font-weight);
 }
 
 .upperSec .number-show-top{
@@ -55,17 +65,33 @@ body{
 .lowerSec {
     display: grid;
     grid-template-columns: 100px 100px 100px;
-    place-items: center;
     gap: 0.5em;
+    text-align: center;
+    font-weight: 400;
+}
+
+.wide{
+    grid-column: span 2;
+}
+
+.tall{
+    grid-row: span 2;
 }
 
 .lowerSec > div {
     border: 1px solid;
     padding: 1em 2em;
+    transition: 0.3s cubic-bezier(.8, -.5, .2, 1.4);
 }
 
-.lowerSec div:hover {
-    border: 1px solid gray;
+.lowerSec .number:hover{
+    border-image: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
+}
+
+
+.lowerSec .operation:hover {
+    box-shadow: 3px -3px #ef4e7b, -3px 3px #a166ab;
+    border-color: #1d1f20;
 }
 
 
