@@ -47,7 +47,7 @@ body{
 
 
 .upperSec {
-    border: 1px solid white;
+    border: 1px solid #ffa9ee;
     padding: 5px 10px;
     font-weight: var(--head-font-weight);
 }
@@ -79,9 +79,11 @@ body{
 }
 
 .lowerSec > div {
-    border: 1px solid;
+    border: 1px solid #807993;
     padding: 1em 2em;
+    cursor: pointer;
     transition: 0.3s cubic-bezier(.8, -.5, .2, 1.4);
+    user-select: none;
 }
 
 .lowerSec .number:hover{
@@ -90,7 +92,7 @@ body{
 
 
 .lowerSec .operation:hover {
-    box-shadow: 3px -3px #ef4e7b, -3px 3px #a166ab;
+    box-shadow: 3px -3px #ad99d9, -3px 3px #e7a2f2;
     border-color: #1d1f20;
 }
 
