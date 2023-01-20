@@ -51,6 +51,8 @@ body{
     border: 1px solid #ffa9ee;
     padding: 5px 10px;
     font-weight: var(--head-font-weight);
+    height: 65px;
+
 }
 
 .upperSec .number-show-top{
