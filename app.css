@@ -19,7 +19,6 @@ body{
     min-height: 100vh;
     background: black;
     color: white;
-    overflow: hidden;
     font-family: var(--font);
 }
 
@@ -48,11 +47,12 @@ body{
 
 
 .upperSec {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
     border: 1px solid #ffa9ee;
     padding: 5px 10px;
     font-weight: var(--head-font-weight);
     height: 65px;
-
 }
 
 .upperSec .number-show-top{
@@ -90,11 +90,16 @@ body{
 }
 
 .lowerSec .number:hover{
-    border-image: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
+    border-image: linear-gradient(60deg, #f79533, #a166ab, #1098ad, #6fba82) 1;
+}
+
+.lowerSec .number:focus{
+    background: inherit;
+    user-select: none;
 }
 
 
-.lowerSec .operation:hover {
+.lowerSec .fun:hover {
     box-shadow: 3px -3px #ad99d9, -3px 3px #e7a2f2;
     border-color: #1d1f20;
 }
@@ -103,19 +108,6 @@ body{
 
 
 /*Keyframes starts*/
-
-@keyframes border {
-
-    from{
-        border-image: linear-gradient(to bottom, red, blue, green);
-        border-image-slice: 1;
-    }
-
-    to{
-        border-image: linear-gradient(to bottom, green, blue, red);
-        border-image-slice: 1;
-    }
-}
 
 @keyframes animatedgradient {
     0% { background-position: 0% 50%; }

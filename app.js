@@ -14,12 +14,19 @@ class Calculator {
   	}
 
 	appendNumber(val) {
-		document.querySelector('.number-show-bottom').innerText = this.nextAction.innerText.toString() + val.toString();
+		if(this.nextAction.innerText == 0){
+			this.nextAction.innerText = '';
+		}
+		
+		this.nextAction.innerText = this.nextAction.innerText.toString() + val.toString();
 	}
 
 	delete() {
-		console.log("delete");
-	}
+		var myNumber = parseInt(this.nextAction.innerText);
+		let newNumber = +(myNumber.toString().slice(0, -1));
+		// console.log(newNumber);
+		this.nextAction.innerText = newNumber;	
+	}		
 
 }
 
