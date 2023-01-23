@@ -4,40 +4,88 @@ class Calculator {
 	constructor(nextAction,prevAction) {  // Constructor
 		this.nextAction = nextAction;
 		this.prevAction = prevAction;
+		this.clear();
   	}
 
-  	clear() {
-  		console.log('2nd Call');
-  		this.nextAction.innerText = '';
-  		this.prevAction.innerText = '';
-  		this.operation = undefined;
-  	}
+  clear() {
+  	this.currentOperation = '';
+  	this.prevOperation = '';
+  	this.operation = undefined;
+  }
 
-	appendNumber(val) {
-		if(this.nextAction.innerText == 0){
-			this.nextAction.innerText = '';
+  delete() {
+  	if(this.currentOperation){
+			var myNumber = parseFloat(this.currentOperation);
+			let newNumber = +(myNumber.toString().slice(0, -1));
+			console.log(newNumber);
+			this.currentOperation = newNumber;
+		}else{
+			this.currentOperation = 0;
 		}
-		
-		this.nextAction.innerText = this.nextAction.innerText.toString() + val.toString();
-	}
 
-	delete() {
-		var myNumber = parseInt(this.nextAction.innerText);
-		let newNumber = +(myNumber.toString().slice(0, -1));
-		// console.log(newNumber);
-		this.nextAction.innerText = newNumber;	
-	}		
+		if(this.currentOperation == 'NaN') {
+			this.currentOperation = 0;
+		}
+  }
+
+  appendNumber(number) {
+  	if(number === '.' && this.currentOperation.includes('.')) return
+  	this.currentOperation = this.currentOperation.toString() + number.toString();
+  }
+
+  chooseOperation(op) {
+  	if(this.currentOperation === '') return
+
+  	if(this.prevOperation !== ''){
+  		this.calculate()
+  	}
+
+  	this.operation = op;
+  	this.prevOperation = this.currentOperation;
+  	this.currentOperation = '';
+  }
+
+  calculate() {
+
+  	var result;
+
+  	switch(this.operation) {
+		  case '+':
+		    result = parseFloat(this.prevOperation) + parseFloat(this.currentOperation);
+		    break;
+		  case '-':
+		    result = parseFloat(this.prevOperation) - parseFloat(this.currentOperation);
+		    break;
+ 		  case '*':
+		    result = parseFloat(this.prevOperation) * parseFloat(this.currentOperation);
+		    break;
+		  case '/':
+		    result = parseFloat(this.prevOperation) / parseFloat(this.currentOperation);
+		    break;
+		  case '%':
+		    result = parseFloat(this.prevOperation) % parseFloat(this.currentOperation);
+		    break;
+		  default:
+		    return;
+		} 
+
+  	this.currentOperation = result;
+  	this.operation = undefined;
+  	this.prevOperation = '';
+
+  }
+
+  updateDisplay() {
+  	this.nextAction.innerText = this.currentOperation;
+  	this.prevAction.innerText = this.prevOperation;
+  }
+
 
 }
 
 const numbers = document.querySelectorAll('.number');
-const addition = document.querySelector('.addition');
-const subtraction = document.querySelector('.subtraction');
-const multiply = document.querySelector('.multiply');
-const divide = document.querySelector('.divide');
-const percent = document.querySelector('.percent');
+const operation = document.querySelectorAll('.operation');
 const equals = document.querySelector('.equals');
-const dot = document.querySelector('.dot');
 const del = document.querySelector('.delete');
 const ac = document.querySelector('.allClear');
 const prevAction = document.querySelector('.number-show-top');
@@ -46,9 +94,21 @@ const nextAction = document.querySelector('.number-show-bottom');
 const calculator = new Calculator(nextAction,prevAction);
 
   numbers.forEach(button => {
-	button.addEventListener('click', () => {
-		calculator.appendNumber(button.innerText);
-	})
+		button.addEventListener('click', () => {
+			calculator.appendNumber(button.innerText);
+			calculator.updateDisplay();
+		})
+  });
+
+  operation.forEach(chooseOp => {
+		chooseOp.addEventListener('click', () => {
+			calculator.chooseOperation(chooseOp.innerText);
+			calculator.updateDisplay();
+		})
+  });
+
+  equals.addEventListener('click', () => {
+  		calculator.calculate();
   });
 
   ac.addEventListener('click', () => {
