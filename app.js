@@ -41,7 +41,7 @@ class Calculator {
   	}
 
   	this.operation = op;
-  	this.prevOperation = this.currentOperation;
+  	this.prevOperation = this.currentOperation + this.operation;
   	this.currentOperation = '';
   }
 
