@@ -5,7 +5,7 @@ class Calculator {
 		this.nextAction = nextAction;
 		this.prevAction = prevAction;
 		this.clear();
-  	}
+  }
 
   clear() {
   	this.currentOperation = '';
@@ -48,7 +48,7 @@ class Calculator {
   calculate() {
 
   	var result;
-
+console.log(this.operation);
   	switch(this.operation) {
 		  case '+':
 		    result = parseFloat(this.prevOperation) + parseFloat(this.currentOperation);
@@ -83,11 +83,11 @@ class Calculator {
 
 }
 
-const numbers = document.querySelectorAll('.number');
-const operation = document.querySelectorAll('.operation');
-const equals = document.querySelector('.equals');
-const del = document.querySelector('.delete');
-const ac = document.querySelector('.allClear');
+const numbers    = document.querySelectorAll('.number');
+const operation  = document.querySelectorAll('.operation');
+const equals     = document.querySelector('.equals');
+const del        = document.querySelector('.delete');
+const ac         = document.querySelector('.allClear');
 const prevAction = document.querySelector('.number-show-top');
 const nextAction = document.querySelector('.number-show-bottom');
 
@@ -109,10 +109,12 @@ const calculator = new Calculator(nextAction,prevAction);
 
   equals.addEventListener('click', () => {
   		calculator.calculate();
+  		calculator.updateDisplay();
   });
 
   ac.addEventListener('click', () => {
   		calculator.clear();
+  		calculator.updateDisplay();
   });
 
   del.addEventListener('click', () => {
