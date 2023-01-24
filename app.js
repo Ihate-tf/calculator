@@ -119,4 +119,5 @@ const calculator = new Calculator(nextAction,prevAction);
 
   del.addEventListener('click', () => {
   		calculator.delete();
+  		calculator.updateDisplay();
   })
