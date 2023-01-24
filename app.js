@@ -30,6 +30,8 @@ class Calculator {
 
   appendNumber(number) {
   	if(number === '.' && this.currentOperation.includes('.')) return
+  	if(this.currentOperation == 0) {this.currentOperation = ''};
+
   	this.currentOperation = this.currentOperation.toString() + number.toString();
   }
 
